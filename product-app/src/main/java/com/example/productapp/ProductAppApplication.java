@@ -6,8 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -28,7 +31,7 @@ class ProductController {
 	}
 
 	@GetMapping(path = "/logout")
-	public String logout(HttpServletRequest request) throws ServletException {
+	public String logout(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		request.logout();
 		return "/";
 	}
